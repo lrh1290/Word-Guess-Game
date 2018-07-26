@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Word Guess Game</title>
+</head>
+<body>
+
+<h1>Word Guess Game</h1>
+<h2>Guess a letter to begin</h2>
+<p id=""guesses remaining: " + guesses"></p>
+
+<script>
+
+//possible words
+var words = [
+    "cocacola",
+    "sprite",
+    "pepsi",
+    "mountaindew",
+    "rootbeer"
+];
+
+var guesses = 10;
+
+
+
+//pick word
+var word = words[Math.floor(Math.random() * words.length)];
+
+var answerArray = [];
+for (var i = 0; i < word.length; i++) {
+    answerArray[i] = "_";
+}
+
+var remainingLetters = word.length;
+
+//game loop
+while (remainingLetters > 0) {
+    //show players progress
+    alert(answerArray.join(" "));
+    //get players guess
+    var guess = prompt("guess a letter");
+    if (guess === null) {
+        break;
+    } else if (guess.length !== 1) {
+        alert("incorrect input")
+    } else
+    //update with players guess
+    for (var j = 0; j < word.length; j++) {
+        if (word[j] === guess) {
+            answerArray[j] = guess;
+            remainingLetters--;
+        }
+    }
+}
+//show answer
+alert(answerArray.join(""));
+alert("correct the word was " + word)
+
+</script>
+    
+</body>
+</html>
