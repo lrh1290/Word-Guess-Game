@@ -5,7 +5,7 @@ var guessCounter = document.getElementById("guess-counter");
 var guessed = document.getElementById("guessed");
 
 var game = {
-    wordList: ["Africa","NorthAmerica","Europe","SouthAmerica","Antartica","Asia","Australia"],
+    wordList: ["Africa","NorthAmerica","Europe","SouthAmerica","Antartica","Asia","Australia","India","Portugal","Thailand","Czechoslovakia","Egypt","Iceland","Netherlands","Britain","Scottland","Russia","Moroco","Argentina","Mongolia","NorthKorea","SouthKorea","Spain","Japan","Nigeria","Chad","Peru","Portugal","Indonesia","Taiwan","Phillipines","Congo","Pakistan","Afghanistan","Zimbabwe","Georgia","Turkey"],
     wins: 0,
     losses: 0,
     lives: [],
@@ -13,18 +13,18 @@ var game = {
     secretWord: "",
     guessCounter: 10,
     evaluateGuess: function(guess) {
-        //check
         var lowercaseGuess = guess.toLowerCase();
         var lowercaseSecretWord = this.secretWord.toLowerCase().split("");
         var match = false;
         for (var i = 0; i < lowercaseSecretWord.length; i++) {
-            //show
             if (lowercaseSecretWord[i] === lowercaseGuess) {
                 match = true;
                 this.guessed[i] = this.secretWord[i];
             }
         }
-        if (!match) this.lives.push(guess);
+        if (!match && !(this.lives.includes(lowercaseGuess))) {
+            this.lives.push(guess);
+        } 
         return match;
     },
     setGuessed: function() {
@@ -37,9 +37,9 @@ var game = {
         this.secretWord = this.wordList[Math.floor(Math.random() * Math.floor(this.wordList.length))];
     },
     resetLives: function() {
-        var self = this;
+        var player = this;
         this.lives.forEach(function(letter, index) {
-            delete self.lives[index];
+            delete player.lives[index];
         });
     },
     render: function(str) {
@@ -58,8 +58,7 @@ document.onkeyup = function(event) {
     var userGuess = event.key;
     var guessed = game.guessed.join("");
     var correct = guessed.replace("-", userGuess) === game.secretWord;
-    // Validate user input
-    var validInput = /^[a-zA-Z_0-9\s-]$/.test(userGuess);
+    var validInput = /^[a-zA-Z]$/.test(userGuess);
     if (validInput) {
         if (correct) {
             game.evaluateGuess(userGuess);
