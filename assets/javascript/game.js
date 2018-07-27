@@ -1,4 +1,4 @@
-var stage = document.getElementById("stage");
+var currentword = document.getElementById("currentword");
 var wins = document.getElementById("wins");
 var losses = document.getElementById("losses");
 var guessCounter = document.getElementById("guess-counter");
@@ -43,7 +43,7 @@ var game = {
         });
     },
     render: function(str) {
-        stage.textContent = this.guessed.join("");
+        currentword.textContent = this.guessed.join("");
         guessCounter.textContent = this.guessCounter;
         lives.textContent = this.lives.join(" ");
         wins.textContent = this.wins;
