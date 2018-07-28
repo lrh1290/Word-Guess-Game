@@ -7,7 +7,7 @@ var guessed = document.getElementById("guessed");
 var gunslinger = document.getElementById("gunslinger");
 
 var game = {
-    wordlist: ["BillytheKid","BuffaloBill","ButchCassidy","JohnWesleyHardin","NatLove","WilliamBrocius","TexasJack","TomKetchum","TomHorn","HarveyLogan","SamBass"],
+    wordlist: ["BillytheKid","BuffaloBill","ButchCassidy","JohnHardin","NatLove","WilliamBrocius","TexasJack","TomKetchum","TomHorn","HarveyLogan","SamBass"],
     wins: 0,
     losses: 0,
     lives: [],
