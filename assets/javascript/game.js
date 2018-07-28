@@ -4,8 +4,9 @@ var losses = document.getElementById("losses");
 var guessCounter = document.getElementById("guess-counter");
 var guessed = document.getElementById("guessed");
 
+
 var game = {
-    wordList: ["Africa","NorthAmerica","Europe","SouthAmerica","Antartica","Asia","Australia","India","Portugal","Thailand","Czechoslovakia","Egypt","Iceland","Netherlands","Britain","Scottland","Russia","Moroco","Argentina","Mongolia","NorthKorea","SouthKorea","Spain","Japan","Nigeria","Chad","Peru","Portugal","Indonesia","Taiwan","Phillipines","Congo","Pakistan","Afghanistan","Zimbabwe","Georgia","Turkey"],
+    wordlist: ["BillytheKid","BuffaloBill","ButchCassidy","JohnWesleyHardin","NatLove","WilliamBrocius","TexasJack","TomKetchum","TomHorn","HarveyLogan","SamBass"],
     wins: 0,
     losses: 0,
     lives: [],
@@ -34,7 +35,7 @@ var game = {
     },
     setNewSecretWord: function() {
         this.resetLives();
-        this.secretWord = this.wordList[Math.floor(Math.random() * Math.floor(this.wordList.length))];
+        this.secretWord = this.wordlist[Math.floor(Math.random() * Math.floor(this.wordlist.length))];
     },
     resetLives: function() {
         var player = this;
@@ -53,7 +54,6 @@ var game = {
 game.setNewSecretWord();
 game.setGuessed();
 game.render();
-// When the user presses a key
 document.onkeyup = function(event) {
     var userGuess = event.key;
     var guessed = game.guessed.join("");
@@ -68,11 +68,8 @@ document.onkeyup = function(event) {
             game.secretWord = "";
             game.setNewSecretWord();
             game.setGuessed();
-        // check guess counter
         } else if (game.guessCounter > 0 && guessed !== game.secretWord) {          
-            // Check letter against word
             var match = game.evaluateGuess(userGuess);
-            // remove guess counter on guess
             if (!match) {
                 game.guessCounter--;
                 if (game.guessCounter === 0) {
@@ -88,4 +85,3 @@ document.onkeyup = function(event) {
     }
     game.render();
 };
-

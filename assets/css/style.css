@@ -2,10 +2,42 @@ body {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 24px;
     line-height: 40px;
-    color: black;
+    color: white;
+    background: black;
   }
   
   * {
     box-sizing: border-box;
+  }
+
+  .tytle{
+    position: relative;
+    left: 20%;
+    margin-top: 5%;
+  }
+
+  .mainpicture {
+    border: solid black 3px;
+    margin: 20px;
+  }
+
+  .cword{
+    position: relative;
+    left: 27%;
+  }
+
+  .score{
+    position: relative;
+    left: 35%;
+  }
+
+  .input{
+    position: relative;
+    left: 35%;
+  }
+
+  .hintz{
+    position: relative;
+    left: 27%;
   }
   

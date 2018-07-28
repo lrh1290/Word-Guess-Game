@@ -4,29 +4,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
+
 <body>
     <div id="main-container" class="container">
-        <div class="row">
-            <div class="col">
-    <h1>Hangman</h1>
-    <p>Guess a letter to begin! *HINT* Geography</p>
+    <div class="tytle">
+    <p>GUESS A LETTER TO BEGIN!</p>
+    </div>
+
+    <div class="mainpicture">
+    <img src="assets/images/highnoon.jpg" class="img-fluid" alt="Your Name">
+    </div>
+
+    <div class="cword">
     <p>Secret Word: <span id="currentword"></span></p>
     </div>
+
+    <div class="input">
+    <p>Guessed: <span id="lives"></span></p>
+    <p>Guesses: <span id="guess-counter"></span></p>
     </div>
-    <div class="row">
-            <div class="col-md-4">
+
+    <div class="score">
     <p>Wins: <span id="wins"></span></p>
     <p>Losses: <span id="losses"></span></p>
     </div>
-            <div class="col-md-4">
-    <p>Guesses: <span id="guess-counter"></span></p>
-    <p>Guessed: <span id="lives"></span></p>
+
+    <div class="hintz">
+    <p>*HINT* WILD WEST</p>
     </div>
+
     </div>
-    </div>
+
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
