@@ -10,34 +10,43 @@ body {
     box-sizing: border-box;
   }
 
-  .tytle{
-    position: relative;
-    left: 20%;
-    margin-top: 5%;
+  .mainpicture {
+    margin: 30px 0 0 0;
+    text-align: center;
   }
 
-  .mainpicture {
-    border: solid black 3px;
-    margin: 20px;
+  .slinger {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pword{
+    margin: 0 auto;
+    max-width: 300px;
+    text-align: center;
   }
 
   .cword{
-    position: relative;
-    left: 27%;
+    margin: 0 auto;
+    max-width: 300px;
+    text-align: center;
   }
 
   .score{
-    position: relative;
-    left: 35%;
+    margin: 0 auto;
+    max-width: 300px;
+    text-align: center;
   }
 
   .input{
-    position: relative;
-    left: 35%;
+    margin: 0 auto;
+    max-width: 300px;
+    text-align: center;
   }
 
   .hintz{
-    position: relative;
-    left: 27%;
+    margin: 0 auto;
+    max-width: 300px;
+    text-align: center;
   }
   
