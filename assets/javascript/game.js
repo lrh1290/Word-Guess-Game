@@ -4,7 +4,8 @@ var wins = document.getElementById("wins");
 var losses = document.getElementById("losses");
 var guessCounter = document.getElementById("guess-counter");
 var guessed = document.getElementById("guessed");
-var gunslinger = document.getElementById("gunslinger");
+var mugShot = document.getElementById("mugShot");
+var highnoon = document.getElementById("highnoon");
 
 var game = {
     wordlist: ["BillytheKid","BuffaloBill","ButchCassidy","JohnHardin","NatLove","TexasJack","TomKetchum","TomHorn","HarveyLogan","SamBass"],
@@ -25,9 +26,14 @@ var game = {
                 this.guessed[i] = this.secretWord[i];
             }
         }
-        if (!match && !(this.lives.includes(lowercaseGuess))) {
-            this.lives.push(guess);
-        } 
+        if (!match){
+            if (this.lives.indexOf(guess) < 0 ) {
+                this.lives.push(guess)
+            }
+            else {
+                match = true;
+            }
+        }
         return match;
     },
     setGuessed: function() {
@@ -36,29 +42,23 @@ var game = {
         }
     },
     setNewSecretWord: function() {
-        this.giveLives();
+        this.lives = [];
         this.secretWord = this.wordlist[Math.floor(Math.random() * Math.floor(this.wordlist.length))];
     },
-    setGunSlinger: function() {
-        gunslinger.removeAttribute("class");
+    setmugShot: function() {
+        mugShot.removeAttribute("class");
     },
     setPrevSecretWord: function() {
         this.previousword = this.secretWord;
     },
-    giveLives: function() {
-        var player = this;
-        this.lives.forEach(function(letter, index) {
-            delete player.lives[index];
-        });
-    },
-    rendergame: function(str) {
+    rendergame: function() {
         currentword.textContent = this.guessed.join("");
         guessCounter.textContent = this.guessCounter;
         lives.textContent = this.lives.join(" ");
         wins.textContent = this.wins;
         losses.textContent = this.losses;
         previousword.textContent = this.previousword;
-        gunslinger.innerHTML = '<img src="assets/images/'+ this.secretWord + '.jpg" class="img-fluid">';
+        mugShot.innerHTML = '<img src="assets/images/'+ this.secretWord + '.jpg" class="img-fluid">';
     }
 };
 game.setNewSecretWord();
@@ -79,12 +79,13 @@ document.onkeyup = function(event) {
             game.secretWord = "";
             game.setNewSecretWord();
             game.setGuessed();
-            game.setGunSlinger();
+            game.setmugShot();
         } else if (game.guessCounter > 0 && guessed !== game.secretWord) {          
             var match = game.evaluateGuess(userGuess);
             if (!match) {
                 game.guessCounter--;
                 if (game.guessCounter === 0) {
+                    highnoon.play();
                     game.losses++;
                     game.setPrevSecretWord();
                     game.guessCounter = 10;
@@ -92,7 +93,7 @@ document.onkeyup = function(event) {
                     game.secretWord = "";
                     game.setNewSecretWord();
                     game.setGuessed();
-                    game.setGunSlinger();
+                    game.setmugShot();
                 }
             }
         } 
